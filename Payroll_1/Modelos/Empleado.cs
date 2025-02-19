@@ -42,5 +42,11 @@ namespace Payroll_1.Modelos
         {
             string Prueba1;
         }
+
+        public void MetodoPruebaWil()
+        {
+            string prueba;
+            int algo;
+        }
     }
 }
