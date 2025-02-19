@@ -36,20 +36,5 @@ namespace Payroll_1.Modelos
             Direccion = direccion;
             CuentaCorriente = cuentaCorriente;
         }
-
-
-        public void MetodoPruebaEy()
-        {
-            string Prueba1;
-        }
-
-        public void MetodoPruebaEyConflicto()
-        {
-            string Prueba1;
-        public void MetodoPruebaWil()
-        {
-            string prueba;
-            int algo;
-        }
     }
 }
