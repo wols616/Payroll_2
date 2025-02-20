@@ -11,5 +11,10 @@ namespace Payroll_1.Modelos
         public int IdCategoria { get; set; }
         public string NombreCategoria { get; set; }
         public double SueldoBase { get; set; }
+
+        public static void hola()
+        {
+            Console.WriteLine("hola");
+        }
     }
 }
