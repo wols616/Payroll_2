@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             label2 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvEmpleados = new DataGridView();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -47,7 +47,7 @@
             btn_eliminar = new Button();
             label9 = new Label();
             dataGridView2 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
@@ -69,14 +69,15 @@
             label2.TabIndex = 1;
             label2.Text = "Seleccionar empleado";
             // 
-            // dataGridView1
+            // dgvEmpleados
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(63, 120);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1014, 188);
-            dataGridView1.TabIndex = 2;
+            dgvEmpleados.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleados.Location = new Point(63, 120);
+            dgvEmpleados.Name = "dgvEmpleados";
+            dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.Size = new Size(1014, 188);
+            dgvEmpleados.TabIndex = 2;
             // 
             // label3
             // 
@@ -237,12 +238,12 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvEmpleados);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "gestionarContratos";
             Text = "gestionarContratos";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -252,7 +253,7 @@
 
         private Label label1;
         private Label label2;
-        private DataGridView dataGridView1;
+        private DataGridView dgvEmpleados;
         private Label label3;
         private Label label4;
         private Label label5;
