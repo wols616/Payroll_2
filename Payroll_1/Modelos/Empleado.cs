@@ -47,7 +47,6 @@ namespace Payroll_1.Modelos
         Conexion conexion = new Conexion();
 
 
-
         //Agregar
         public void AgregarEmpleado()
         {
@@ -57,7 +56,7 @@ namespace Payroll_1.Modelos
             {
                 using (SqlConnection con = conexion.GetConnection())
                 {
-                    string query = "INSERT INTO Empleado (dui, nombre, apellidos, direccion, telefono, cuenta_corriente) " +
+                    string query = "INSERT INTO Empleado (dui, nombre, apellidos, telefono, direccion, cuenta_corriente) " +
                                    "VALUES (@dui, @nombre, @apellidos, @telefono, @direccion, @cuenta_corriente)";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
@@ -90,8 +89,6 @@ namespace Payroll_1.Modelos
         }
 
 
-
-
         //Mostrar
         public List<Empleado> MostrarEmpleados()
         {
@@ -114,12 +111,13 @@ namespace Payroll_1.Modelos
                                 Empleado empleado = new Empleado
                                 {
                                     IdEmpleado = Convert.ToInt32(reader["id_empleado"]),
+                                    Dui = reader["dui"].ToString(),
                                     Nombre = reader["nombre"].ToString(),
                                     Apellidos = reader["apellidos"].ToString(),
-                                    Direccion = reader["direccion"].ToString(),
                                     Telefono = reader["telefono"].ToString(),
+                                    Direccion = reader["direccion"].ToString(),
                                     CuentaCorriente = reader["cuenta_corriente"].ToString()
-                                };
+                                }; 
                                 empleados.Add(empleado);
                             }
                         }
@@ -133,33 +131,6 @@ namespace Payroll_1.Modelos
 
             return empleados;
         }
-
-
-
-        //Cargar la tabla
-        public void CargarTablaEmpleados(DataGridView dgvEmpleados)
-        {
-            try
-            {
-                Conexion conexion = new Conexion();
-                string query = "SELECT id_empleado, dui, nombre, apellidos, direccion, telefono, cuenta_corriente FROM Empleado";
-                using (SqlConnection con = conexion.GetConnection())
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter(query, con))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);  
-                        dgvEmpleados.DataSource = dt;  
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los empleados: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
 
 
         //Editar
