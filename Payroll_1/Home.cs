@@ -22,5 +22,12 @@ namespace Payroll_1
             frm.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            agregarEmpleado frm = new agregarEmpleado();
+            frm.Show();
+            this.Hide();
+        }
     }
 }
