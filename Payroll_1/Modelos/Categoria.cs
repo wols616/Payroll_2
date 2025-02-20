@@ -11,28 +11,5 @@ namespace Payroll_1.Modelos
         public int IdCategoria { get; set; }
         public string NombreCategoria { get; set; }
         public double SueldoBase { get; set; }
-
-        public static void hola()
-        {
-            Console.WriteLine("hola");
-        }
-        public static void equis()
-        {
-            Console.WriteLine("EQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS");
-        }
-
-
-        public static void eyleen()
-        {
-            bool eyleen_vio_a_mario = true;
-
-            if (eyleen_vio_a_mario == true) {
-                Console.WriteLine("ush");
-            }
-        
-        public static void Adios()
-        {
-            Console.WriteLine("Adios");
-        }
     }
 }
