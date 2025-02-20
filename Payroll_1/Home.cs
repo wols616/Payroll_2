@@ -37,5 +37,12 @@ namespace Payroll_1
             frm.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AgregarCategoria frm = new AgregarCategoria();
+            frm.Show();
+            this.Hide();
+        }
     }
 }
