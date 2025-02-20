@@ -16,5 +16,9 @@ namespace Payroll_1.Modelos
         {
             Console.WriteLine("hola");
         }
+        public static void Adios()
+        {
+            Console.WriteLine("Adios");
+        }
     }
 }
