@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Payroll_1.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace Payroll_1.Formularios
         public gestionarContratos()
         {
             InitializeComponent();
+            cargarEmpleados();
         }
+
+        Empleado empleado = new Empleado();
+
+        private void cargarEmpleados()
+        {
+            List<Empleado> listaEmpleados = empleado.MostrarEmpleados();
+            dgvEmpleados.DataSource = listaEmpleados;
+            dgvEmpleados.Columns["IdEmpleado"].Visible = false;
+        }
+
+
     }
+
+    
 }
