@@ -16,6 +16,10 @@ namespace Payroll_1.Modelos
         {
             Console.WriteLine("hola");
         }
+        public static void equis()
+        {
+            Console.WriteLine("EQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIS");
+        }
 
 
         public static void eyleen()
