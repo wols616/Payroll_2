@@ -38,10 +38,10 @@ namespace Payroll_1.Formularios
                 empleado.Direccion = this.txt_Direccion.Text;
                 empleado.Telefono = this.txt_Telefono.Text;
                 empleado.CuentaCorriente = this.txt_Ncuenta.Text;
-
                 empleado.AgregarEmpleado();
-                empleado.CargarTablaEmpleados(dgvEmpleados);
-            }          
+                List<Empleado> listaEmpleados = empleado.MostrarEmpleados();
+                dgvEmpleados.DataSource = listaEmpleados;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace Payroll_1.Formularios
             if (dgvEmpleados.SelectedRows.Count > 0)
             {
 
-                int idEmpleado = Convert.ToInt32(dgvEmpleados.SelectedRows[0].Cells["id_empleado"].Value);
+                int idEmpleado = Convert.ToInt32(dgvEmpleados.SelectedRows[0].Cells["idempleado"].Value);
 
                 empleado.EditarEmpleado(idEmpleado);
             }
@@ -64,12 +64,16 @@ namespace Payroll_1.Formularios
             {
                 MessageBox.Show("Seleccione un empleado para editar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            empleado.CargarTablaEmpleados(dgvEmpleados);
+
+            List<Empleado> listaEmpleados = empleado.MostrarEmpleados();
+            dgvEmpleados.DataSource = listaEmpleados;
         }
 
         private void agregarEmpleado_Load(object sender, EventArgs e)
         {
-            empleado.CargarTablaEmpleados(dgvEmpleados);
+            List<Empleado> listaEmpleados = empleado.MostrarEmpleados();
+            dgvEmpleados.DataSource = listaEmpleados;
+            dgvEmpleados.Columns["IdEmpleado"].Visible = false;
         }
 
         private void dgvEmpleados_SelectionChanged(object sender, EventArgs e)
@@ -82,7 +86,7 @@ namespace Payroll_1.Formularios
                 txt_Apellidos.Text = fila.Cells["apellidos"].Value?.ToString();
                 txt_Direccion.Text = fila.Cells["direccion"].Value?.ToString();
                 txt_Telefono.Text = fila.Cells["telefono"].Value?.ToString();
-                txt_Ncuenta.Text = fila.Cells["cuenta_corriente"].Value?.ToString();
+                txt_Ncuenta.Text = fila.Cells["cuentacorriente"].Value?.ToString();
             }
         }
 
