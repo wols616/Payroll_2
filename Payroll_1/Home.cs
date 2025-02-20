@@ -29,5 +29,13 @@ namespace Payroll_1
             frm.Show();
             this.Hide();
         }
+
+
+        private void btn_contrats_Click(object sender, EventArgs e)
+        {
+            gestionarContratos frm = new gestionarContratos();
+            frm.Show();
+            this.Hide();
+        }
     }
 }
