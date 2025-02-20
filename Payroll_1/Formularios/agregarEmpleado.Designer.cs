@@ -43,6 +43,7 @@
             btn_Guardar = new Button();
             btn_Modificar = new Button();
             dgvEmpleados = new DataGridView();
+            btn_Limpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -146,7 +147,7 @@
             // 
             btn_Guardar.Location = new Point(57, 503);
             btn_Guardar.Name = "btn_Guardar";
-            btn_Guardar.Size = new Size(234, 45);
+            btn_Guardar.Size = new Size(147, 45);
             btn_Guardar.TabIndex = 17;
             btn_Guardar.Text = "Guardar";
             btn_Guardar.UseVisualStyleBackColor = true;
@@ -154,9 +155,9 @@
             // 
             // btn_Modificar
             // 
-            btn_Modificar.Location = new Point(320, 503);
+            btn_Modificar.Location = new Point(239, 503);
             btn_Modificar.Name = "btn_Modificar";
-            btn_Modificar.Size = new Size(234, 45);
+            btn_Modificar.Size = new Size(147, 45);
             btn_Modificar.TabIndex = 18;
             btn_Modificar.Text = "Modificar";
             btn_Modificar.UseVisualStyleBackColor = true;
@@ -168,14 +169,27 @@
             dgvEmpleados.Location = new Point(716, 59);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleados.Size = new Size(786, 539);
             dgvEmpleados.TabIndex = 19;
+            dgvEmpleados.SelectionChanged += dgvEmpleados_SelectionChanged;
+            // 
+            // btn_Limpiar
+            // 
+            btn_Limpiar.Location = new Point(429, 503);
+            btn_Limpiar.Name = "btn_Limpiar";
+            btn_Limpiar.Size = new Size(147, 45);
+            btn_Limpiar.TabIndex = 20;
+            btn_Limpiar.Text = "Limpiar";
+            btn_Limpiar.UseVisualStyleBackColor = true;
+            btn_Limpiar.Click += button1_Click_1;
             // 
             // agregarEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1576, 861);
+            Controls.Add(btn_Limpiar);
             Controls.Add(dgvEmpleados);
             Controls.Add(btn_Modificar);
             Controls.Add(btn_Guardar);
@@ -216,5 +230,6 @@
         private Button btn_Guardar;
         private Button btn_Modificar;
         private DataGridView dgvEmpleados;
+        private Button btn_Limpiar;
     }
 }
