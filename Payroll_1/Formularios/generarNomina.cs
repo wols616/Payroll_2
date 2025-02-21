@@ -17,6 +17,7 @@ namespace Payroll_1.Formularios
         decimal sueldoB = 400;
         decimal totalDeducciones = 0;
         decimal sueldoNetro = 0;
+        Empleado empleado = new Empleado();
         public generarNomina()
         {
             InitializeComponent();
@@ -24,17 +25,17 @@ namespace Payroll_1.Formularios
 
         private void cargarTablaEmpleados()
         {
-            Empleado empleado1 = new Empleado(1, "01234567-8", "Carlos", "Ramírez", "7777-1234", "San Salvador, El Salvador", "1234567890123456");
-            Empleado empleado2 = new Empleado(2, "09876543-2", "Ana", "López", "7777-5678", "Santa Tecla, El Salvador", "6543210987654321");
-            Empleado empleado3 = new Empleado(3, "12345678-9", "Luis", "González", "7777-8765", "Soyapango, El Salvador", "0987654321123456");
-            List<Empleado> empleados = new List<Empleado>();
-            empleados.Add(empleado1);
-            empleados.Add(empleado2);
-            empleados.Add(empleado3);
-
+            //Empleado empleado1 = new Empleado(1, "01234567-8", "Carlos", "Ramírez", "7777-1234", "San Salvador, El Salvador", "1234567890123456");
+            //Empleado empleado2 = new Empleado(2, "09876543-2", "Ana", "López", "7777-5678", "Santa Tecla, El Salvador", "6543210987654321");
+            //Empleado empleado3 = new Empleado(3, "12345678-9", "Luis", "González", "7777-8765", "Soyapango, El Salvador", "0987654321123456");
+            //List<Empleado> empleados = new List<Empleado>();
+            //empleados.Add(empleado1);
+            //empleados.Add(empleado2);
+            //empleados.Add(empleado3);
+            
 
             //-----------------------------------------------------------------------------------------------------------------------------------
-            dgvEmpleados.DataSource = empleados;
+            dgvEmpleados.DataSource = empleado.MostrarEmpleados();
         }
 
         private void cargarComboBoxDeducciones()

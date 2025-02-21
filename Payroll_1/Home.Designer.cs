@@ -31,6 +31,8 @@
             btnDeducciones = new Button();
             btnAsignarDeducciones = new Button();
             button1 = new Button();
+            btn_contracts = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // btnDeducciones
@@ -66,11 +68,34 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // btn_contracts
+            // 
+            btn_contracts.Location = new Point(399, 129);
+            btn_contracts.Name = "btn_contracts";
+            btn_contracts.Size = new Size(168, 29);
+            btn_contracts.TabIndex = 3;
+            btn_contracts.Text = "Gestionar contratos";
+            btn_contracts.UseVisualStyleBackColor = true;
+            btn_contracts.Click += btn_contrats_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(399, 262);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(168, 31);
+            button2.TabIndex = 4;
+            button2.Text = "Agregar Categoria";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(button2);
+            Controls.Add(btn_contracts);
             Controls.Add(button1);
             Controls.Add(btnAsignarDeducciones);
             Controls.Add(btnDeducciones);
@@ -85,5 +110,7 @@
         private Button btnDeducciones;
         private Button btnAsignarDeducciones;
         private Button button1;
+        private Button btn_contracts;
+        private Button button2;
     }
 }
