@@ -102,7 +102,7 @@ namespace Payroll_1.Formularios
         {
             Home frm = new Home();
             frm.Show();
-            this.Hide();
+            this.Dispose();
         }
 
         private void txtPorcentajee_TextChanged(object sender, EventArgs e)
