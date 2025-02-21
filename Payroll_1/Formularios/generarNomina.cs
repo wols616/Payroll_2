@@ -197,7 +197,7 @@ namespace Payroll_1.Formularios
         {
             Home frm = new Home();
             frm.Show();
-            this.Hide();
+            this.Dispose();
         }
 
         private void label4_Click(object sender, EventArgs e)
