@@ -90,7 +90,14 @@ namespace Payroll_1.Formularios
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Home frm = new Home();
+            frm.Show();
+            this.Dispose();
+        }
+
+        private void agregarEmpleado_MouseClick(object sender, MouseEventArgs e)
         {
             dgvEmpleados.ClearSelection();
             txt_DUI.Text = "";
@@ -99,6 +106,7 @@ namespace Payroll_1.Formularios
             txt_Direccion.Text = "";
             txt_Telefono.Text = "";
             txt_Ncuenta.Text = "";
+
         }
     }
 }
