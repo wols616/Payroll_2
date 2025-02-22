@@ -13,6 +13,6 @@ namespace Payroll_1.Modelos
         public int IdCategoria { get; set; }
 
         // Relación con Categoria
-        public Categoria Categoria { get; set; }
+        //public Categoria Categoria { get; set; }
     }
 }

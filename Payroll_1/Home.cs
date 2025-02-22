@@ -25,7 +25,7 @@ namespace Payroll_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            agregarEmpleado frm = new agregarEmpleado();
+            GestionarEmpleados frm = new GestionarEmpleados();
             frm.Show();
             this.Hide();
         }
