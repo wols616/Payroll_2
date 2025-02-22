@@ -13,6 +13,8 @@ namespace Payroll_1.Modelos
         public DateTime FechaAlta { get; set; }
         public DateTime? FechaBaja { get; set; } // Nullable para contratos indefinidos
         public int IdPuesto { get; set; }
+        public string TipoContrato { get; set; }
+        public string Vigente { get; set; }
 
         // Relación con Empleado y Puesto
         //public Empleado Empleado { get; set; }

@@ -19,11 +19,11 @@ namespace Payroll_1.Formularios
             cargarEmpleados();
         }
 
-        Empleado empleado = new Empleado();
+        Empleados empleado = new Empleados();
 
         private void cargarEmpleados()
         {
-            List<Empleado> listaEmpleados = empleado.MostrarEmpleados();
+            List<Empleados> listaEmpleados = empleado.MostrarEmpleados();
             dgvEmpleados.DataSource = listaEmpleados;
             dgvEmpleados.Columns["IdEmpleado"].Visible = false;
         }
@@ -32,7 +32,14 @@ namespace Payroll_1.Formularios
         {
             Home frm = new Home();
             frm.Show();
-            this.Dispose();
+            this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            HomeAdmin frm = new HomeAdmin();
+            frm.Show();
+            this.Hide();
         }
     }
 

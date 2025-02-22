@@ -42,21 +42,22 @@
             txtSueldoBase = new Label();
             txtSalarioNeto = new Label();
             txtTotalDeducciones = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvEmpleados
             // 
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleados.Location = new Point(80, 75);
-            dgvEmpleados.Margin = new Padding(3, 4, 3, 4);
+            dgvEmpleados.Location = new Point(70, 56);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleados.Size = new Size(723, 200);
+            dgvEmpleados.Size = new Size(633, 150);
             dgvEmpleados.TabIndex = 0;
             dgvEmpleados.SelectionChanged += dgvEmpleados_SelectionChanged;
             dgvEmpleados.MouseClick += dgvEmpleados_MouseClick;
@@ -64,30 +65,27 @@
             // dgvDeducciones
             // 
             dgvDeducciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDeducciones.Location = new Point(80, 393);
-            dgvDeducciones.Margin = new Padding(3, 4, 3, 4);
+            dgvDeducciones.Location = new Point(70, 295);
             dgvDeducciones.Name = "dgvDeducciones";
             dgvDeducciones.RowHeadersWidth = 51;
             dgvDeducciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDeducciones.Size = new Size(466, 200);
+            dgvDeducciones.Size = new Size(408, 150);
             dgvDeducciones.TabIndex = 1;
             // 
             // cbxDeducciones
             // 
             cbxDeducciones.FormattingEnabled = true;
-            cbxDeducciones.Location = new Point(665, 393);
-            cbxDeducciones.Margin = new Padding(3, 4, 3, 4);
+            cbxDeducciones.Location = new Point(582, 295);
             cbxDeducciones.Name = "cbxDeducciones";
-            cbxDeducciones.Size = new Size(138, 28);
+            cbxDeducciones.Size = new Size(121, 23);
             cbxDeducciones.TabIndex = 2;
             cbxDeducciones.SelectedValueChanged += cbxDeducciones_SelectedValueChanged;
             // 
             // btnAsignar
             // 
-            btnAsignar.Location = new Point(665, 445);
-            btnAsignar.Margin = new Padding(3, 4, 3, 4);
+            btnAsignar.Location = new Point(582, 334);
             btnAsignar.Name = "btnAsignar";
-            btnAsignar.Size = new Size(138, 31);
+            btnAsignar.Size = new Size(121, 23);
             btnAsignar.TabIndex = 4;
             btnAsignar.Text = "Asignar";
             btnAsignar.UseVisualStyleBackColor = true;
@@ -95,10 +93,9 @@
             // 
             // btnRegresar
             // 
-            btnRegresar.Location = new Point(12, 13);
-            btnRegresar.Margin = new Padding(3, 4, 3, 4);
+            btnRegresar.Location = new Point(458, 241);
             btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(102, 34);
+            btnRegresar.Size = new Size(89, 26);
             btnRegresar.TabIndex = 5;
             btnRegresar.Text = "Regresar";
             btnRegresar.UseVisualStyleBackColor = true;
@@ -107,56 +104,54 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(80, 51);
+            label1.Location = new Point(70, 38);
             label1.Name = "label1";
-            label1.Size = new Size(83, 20);
+            label1.Size = new Size(65, 15);
             label1.TabIndex = 6;
             label1.Text = "Empleados";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(80, 369);
+            label2.Location = new Point(70, 277);
             label2.Name = "label2";
-            label2.Size = new Size(94, 20);
+            label2.Size = new Size(75, 15);
             label2.TabIndex = 7;
             label2.Text = "Deducciones";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(80, 620);
+            label3.Location = new Point(70, 465);
             label3.Name = "label3";
-            label3.Size = new Size(110, 20);
+            label3.Size = new Size(89, 15);
             label3.TabIndex = 8;
             label3.Text = "Complementos";
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(80, 644);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(70, 483);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(466, 200);
+            dataGridView1.Size = new Size(408, 150);
             dataGridView1.TabIndex = 9;
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(80, 905);
-            dataGridView2.Margin = new Padding(3, 4, 3, 4);
+            dataGridView2.Location = new Point(70, 679);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(466, 200);
+            dataGridView2.Size = new Size(408, 150);
             dataGridView2.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(80, 881);
+            label4.Location = new Point(70, 661);
             label4.Name = "label4";
-            label4.Size = new Size(95, 20);
+            label4.Size = new Size(77, 15);
             label4.TabIndex = 10;
             label4.Text = "Percepciones";
             label4.Click += label4_Click;
@@ -164,9 +159,9 @@
             // txtSueldoBase
             // 
             txtSueldoBase.AutoSize = true;
-            txtSueldoBase.Location = new Point(680, 292);
+            txtSueldoBase.Location = new Point(595, 219);
             txtSueldoBase.Name = "txtSueldoBase";
-            txtSueldoBase.Size = new Size(93, 20);
+            txtSueldoBase.Size = new Size(73, 15);
             txtSueldoBase.TabIndex = 12;
             txtSueldoBase.Tag = "";
             txtSueldoBase.Text = "Sueldo Base:";
@@ -174,27 +169,39 @@
             // txtSalarioNeto
             // 
             txtSalarioNeto.AutoSize = true;
-            txtSalarioNeto.Location = new Point(665, 573);
+            txtSalarioNeto.Location = new Point(582, 430);
             txtSalarioNeto.Name = "txtSalarioNeto";
-            txtSalarioNeto.Size = new Size(95, 20);
+            txtSalarioNeto.Size = new Size(74, 15);
             txtSalarioNeto.TabIndex = 13;
             txtSalarioNeto.Text = "Salario Neto:";
             // 
             // txtTotalDeducciones
             // 
             txtTotalDeducciones.AutoSize = true;
-            txtTotalDeducciones.Location = new Point(462, 597);
+            txtTotalDeducciones.Location = new Point(404, 448);
             txtTotalDeducciones.Name = "txtTotalDeducciones";
-            txtTotalDeducciones.Size = new Size(45, 20);
+            txtTotalDeducciones.Size = new Size(35, 15);
             txtTotalDeducciones.TabIndex = 14;
             txtTotalDeducciones.Text = "Total:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(42, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // generarNomina
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(914, 1085);
+            ClientSize = new Size(800, 814);
+            Controls.Add(pictureBox1);
             Controls.Add(txtTotalDeducciones);
             Controls.Add(txtSalarioNeto);
             Controls.Add(txtSueldoBase);
@@ -209,7 +216,6 @@
             Controls.Add(cbxDeducciones);
             Controls.Add(dgvDeducciones);
             Controls.Add(dgvEmpleados);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "generarNomina";
             Text = "generarNomina";
             Load += asignarDeduccionesEmpleado_Load;
@@ -217,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,5 +244,6 @@
         private Label txtSueldoBase;
         private Label txtSalarioNeto;
         private Label txtTotalDeducciones;
+        private PictureBox pictureBox1;
     }
 }

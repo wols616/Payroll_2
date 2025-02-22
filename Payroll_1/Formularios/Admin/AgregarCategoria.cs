@@ -1,4 +1,5 @@
-﻿using Payroll_1.Modelos;
+﻿using Payroll_1.Formularios.Admin;
+using Payroll_1.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -118,15 +119,13 @@ namespace Payroll_1.Formularios
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Home frm = new Home();
-            frm.Show();
-            this.Dispose();
+            
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -135,6 +134,19 @@ namespace Payroll_1.Formularios
             dgvCategoria.ClearSelection();
             this.TxtNombreCat.Text = "";
             this.TxtSueldoBase.Text = "";
+        }
+
+        private void btnAgregarPuesto_Click(object sender, EventArgs e)
+        {
+            AgregarPuestos frm = new AgregarPuestos();
+            frm.ShowDialog();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            GestionarPuestoCategoria frm = new GestionarPuestoCategoria();
+            frm.Show();
+            this.Hide();
         }
     }
 }
