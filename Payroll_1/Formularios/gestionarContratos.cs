@@ -28,8 +28,13 @@ namespace Payroll_1.Formularios
             dgvEmpleados.Columns["IdEmpleado"].Visible = false;
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Home frm = new Home();
+            frm.Show();
+            this.Dispose();
+        }
     }
 
-    
+
 }

@@ -47,6 +47,7 @@
             btn_eliminar = new Button();
             label9 = new Label();
             dataGridView2 = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -217,11 +218,22 @@
             dataGridView2.Size = new Size(1014, 191);
             dataGridView2.TabIndex = 18;
             // 
+            // button1
+            // 
+            button1.Location = new Point(24, 27);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 19;
+            button1.Text = "Regresar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // gestionarContratos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1149, 813);
+            Controls.Add(button1);
             Controls.Add(dataGridView2);
             Controls.Add(label9);
             Controls.Add(btn_eliminar);
@@ -270,5 +282,6 @@
         private Button btn_eliminar;
         private Label label9;
         private DataGridView dataGridView2;
+        private Button button1;
     }
 }

@@ -32,7 +32,6 @@
             agregar = new Button();
             button2 = new Button();
             button3 = new Button();
-            button4 = new Button();
             button5 = new Button();
             TxtNombreCat = new TextBox();
             label1 = new Label();
@@ -81,16 +80,6 @@
             button3.Text = "editar";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(502, 470);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 4;
-            button4.Text = "limpiar";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -144,7 +133,6 @@
             Controls.Add(label1);
             Controls.Add(TxtNombreCat);
             Controls.Add(button5);
-            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(agregar);
@@ -152,6 +140,7 @@
             Name = "AgregarCategoria";
             Text = "AgregarCategoria";
             Load += AgregarCategoria_Load;
+            MouseClick += AgregarCategoria_MouseClick;
             ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -163,7 +152,6 @@
         private Button agregar;
         private Button button2;
         private Button button3;
-        private Button button4;
         private Button button5;
         private TextBox TxtNombreCat;
         private Label label1;

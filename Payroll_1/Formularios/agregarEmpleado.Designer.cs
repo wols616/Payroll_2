@@ -43,7 +43,7 @@
             btn_Guardar = new Button();
             btn_Modificar = new Button();
             dgvEmpleados = new DataGridView();
-            btn_Limpiar = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
@@ -166,7 +166,7 @@
             // dgvEmpleados
             // 
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleados.Location = new Point(716, 59);
+            dgvEmpleados.Location = new Point(599, 34);
             dgvEmpleados.Name = "dgvEmpleados";
             dgvEmpleados.RowHeadersWidth = 51;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -174,22 +174,22 @@
             dgvEmpleados.TabIndex = 19;
             dgvEmpleados.SelectionChanged += dgvEmpleados_SelectionChanged;
             // 
-            // btn_Limpiar
+            // button1
             // 
-            btn_Limpiar.Location = new Point(429, 503);
-            btn_Limpiar.Name = "btn_Limpiar";
-            btn_Limpiar.Size = new Size(147, 45);
-            btn_Limpiar.TabIndex = 20;
-            btn_Limpiar.Text = "Limpiar";
-            btn_Limpiar.UseVisualStyleBackColor = true;
-            btn_Limpiar.Click += button1_Click_1;
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(107, 32);
+            button1.TabIndex = 21;
+            button1.Text = "Regresar";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_2;
             // 
             // agregarEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1576, 861);
-            Controls.Add(btn_Limpiar);
+            ClientSize = new Size(1403, 598);
+            Controls.Add(button1);
             Controls.Add(dgvEmpleados);
             Controls.Add(btn_Modificar);
             Controls.Add(btn_Guardar);
@@ -208,6 +208,7 @@
             Name = "agregarEmpleado";
             Text = "agregarEmpleado";
             Load += agregarEmpleado_Load;
+            MouseClick += agregarEmpleado_MouseClick;
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -230,6 +231,6 @@
         private Button btn_Guardar;
         private Button btn_Modificar;
         private DataGridView dgvEmpleados;
-        private Button btn_Limpiar;
+        private Button button1;
     }
 }

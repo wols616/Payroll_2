@@ -120,16 +120,21 @@ namespace Payroll_1.Formularios
         {
             Home frm = new Home();
             frm.Show();
-            this.Hide();
+            this.Dispose();
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void AgregarCategoria_MouseClick(object sender, MouseEventArgs e)
+        {
             dgvCategoria.ClearSelection();
             this.TxtNombreCat.Text = "";
             this.TxtSueldoBase.Text = "";
-
         }
     }
 }
