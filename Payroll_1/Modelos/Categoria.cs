@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Payroll_1.Modelos
 
         //METODOS CRUD CATEGORIA
         //SELECT CATEGORIA
-        public static List<Categoria> ObtenerCategoria()
+        public static List<Categoria> ObtenerCategorias()
         {
             List<Categoria> categoriaList = new List<Categoria>();
 
@@ -119,6 +120,46 @@ namespace Payroll_1.Modelos
 
             return exito;
         }
+
+        // MÉTODO PARA OBTENER LA CATEGORIA DE UN PUESTO
+        public Categoria ObtenerCategoria(int idCategoria)
+        {
+            Categoria categoria = null;
+            Conexion conexion = new Conexion();
+
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection())
+                {
+                    string query = "SELECT id_categoria, nombre_categoria, sueldo_base FROM Categoria WHERE id_categoria = @id_categoria";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@id_categoria", SqlDbType.Int).Value = idCategoria;
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                categoria = new Categoria
+                                {
+                                    IdCategoria = reader.GetInt32(0),
+                                    NombreCategoria = reader.GetString(1),
+                                    SueldoBase = reader.GetDecimal(2)
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la categoría: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return categoria;
+        }
+
+
+
 
         //ELIMINAR CATEGORIA
         public static bool EliminarCategoria(int idCat)
