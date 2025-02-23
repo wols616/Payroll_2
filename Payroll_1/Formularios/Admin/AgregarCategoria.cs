@@ -22,7 +22,7 @@ namespace Payroll_1.Formularios
         private void cargarTablaDCategoria()
         {
             dgvCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            List<Categoria> categoria = Categoria.ObtenerCategoria();
+            List<Categoria> categoria = Categoria.ObtenerCategorias();
             dgvCategoria.DataSource = categoria;
             dgvCategoria.Columns["IdCategoria"].Visible = false;
         }
