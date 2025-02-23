@@ -208,6 +208,135 @@ namespace Payroll_1.Modelos
             }
         }
 
+        //MÉTODO PARA ACTUALIZAR UN CAMPO QUE YO ELIGA MEDIANTE UN PARAMETRO CON UN DATO QUE PASE POR PARAMETRO
+        public void ActualizarContrato(string campo, object valor)
+        {
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection())
+                {
+                    string query = $"UPDATE Contrato SET {campo} = @valor WHERE id_contrato = @id_contrato";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@id_contrato", SqlDbType.Int).Value = IdContrato;
+                        cmd.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
+                        con.Open();
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        if (filasAfectadas > 0)
+                        {
+                            MessageBox.Show("Contrato actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el contrato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el contrato: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // MÉTODO PARA ACTUALIZAR LA FECHA DE BAJA Y VIGENTE DE UN CONTRATO
+        public void ActualizarFechaBajaVigenteContrato()
+        {
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection())
+                {
+                    string query = "UPDATE Contrato SET fecha_baja = @fecha_baja, vigente = @vigente WHERE id_contrato = @id_contrato";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@id_contrato", SqlDbType.Int).Value = IdContrato;
+                        cmd.Parameters.Add("@fecha_baja", SqlDbType.DateTime).Value = FechaBaja;
+                        cmd.Parameters.Add("@vigente", SqlDbType.VarChar).Value = Vigente;
+                        con.Open();
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        if (filasAfectadas > 0)
+                        {
+                            MessageBox.Show("Contrato actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo actualizar el contrato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el contrato: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public bool ActualizarEstadoEmpleado(int idEmpleado)
+        {
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection())
+                {
+                    // Verificar si todos los contratos del empleado tienen "Vigente" como "N"
+                    string queryVerificar = "SELECT COUNT(*) FROM Contrato WHERE id_empleado = @id_empleado AND vigente = 'S'";
+                    using (SqlCommand cmdVerificar = new SqlCommand(queryVerificar, con))
+                    {
+                        cmdVerificar.Parameters.Add("@id_empleado", SqlDbType.Int).Value = idEmpleado;
+                        con.Open();
+                        int contratosVigentes = (int)cmdVerificar.ExecuteScalar();
+                        con.Close();
+
+                        string nuevoEstado = contratosVigentes == 0 ? "Inactivo" : "Activo";
+
+                        // Verificar el estado actual del empleado
+                        string queryEstadoActual = "SELECT estado FROM Empleado WHERE id_empleado = @id_empleado";
+                        using (SqlCommand cmdEstadoActual = new SqlCommand(queryEstadoActual, con))
+                        {
+                            cmdEstadoActual.Parameters.Add("@id_empleado", SqlDbType.Int).Value = idEmpleado;
+                            con.Open();
+                            string estadoActual = (string)cmdEstadoActual.ExecuteScalar();
+                            con.Close();
+
+                            // Actualizar el estado del empleado solo si es diferente del nuevo estado
+                            if (estadoActual != nuevoEstado)
+                            {
+                                string queryActualizar = "UPDATE Empleado SET estado = @nuevo_estado WHERE id_empleado = @id_empleado";
+                                using (SqlCommand cmdActualizar = new SqlCommand(queryActualizar, con))
+                                {
+                                    cmdActualizar.Parameters.Add("@id_empleado", SqlDbType.Int).Value = idEmpleado;
+                                    cmdActualizar.Parameters.Add("@nuevo_estado", SqlDbType.VarChar).Value = nuevoEstado;
+                                    con.Open();
+                                    int filasAfectadas = cmdActualizar.ExecuteNonQuery();
+                                    con.Close();
+
+                                    if (filasAfectadas > 0)
+                                    {
+                                        MessageBox.Show($"Estado del empleado actualizado a {nuevoEstado}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se pudo actualizar el estado del empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return false;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // El estado ya es el correcto, no es necesario actualizar
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el estado del empleado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }
 
