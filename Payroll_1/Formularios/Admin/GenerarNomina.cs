@@ -17,7 +17,7 @@ namespace Payroll_1.Formularios
         decimal sueldoB = 400;
         decimal totalDeducciones = 0;
         decimal sueldoNetro = 0;
-        Empleado empleado = new Empleado();
+        Empleados empleado = new Empleados();
         public generarNomina()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace Payroll_1.Formularios
             //empleados.Add(empleado1);
             //empleados.Add(empleado2);
             //empleados.Add(empleado3);
-            
+
 
             //-----------------------------------------------------------------------------------------------------------------------------------
             dgvEmpleados.DataSource = empleado.MostrarEmpleados();
@@ -195,9 +195,7 @@ namespace Payroll_1.Formularios
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            Home frm = new Home();
-            frm.Show();
-            this.Dispose();
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -209,6 +207,13 @@ namespace Payroll_1.Formularios
         {
             cambiarBoton();
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Home frm = new Home();
+            frm.Show();
+            this.Hide();
         }
     }
 }

@@ -100,9 +100,7 @@ namespace Payroll_1.Formularios
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            Home frm = new Home();
-            frm.Show();
-            this.Dispose();
+            
         }
 
         private void txtPorcentajee_TextChanged(object sender, EventArgs e)
@@ -144,6 +142,13 @@ namespace Payroll_1.Formularios
                     }
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Home frm = new Home();
+            frm.Show();
+            this.Hide();
         }
     }
 }
