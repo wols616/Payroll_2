@@ -1,4 +1,5 @@
-﻿using Payroll_1.Formularios.Admin;
+﻿using Microsoft.IdentityModel.Tokens;
+using Payroll_1.Formularios.Admin;
 using Payroll_1.Modelos;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,11 @@ namespace Payroll_1.Formularios
                 MessageBox.Show("Ingrese un sueldo base válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (sueldoBase < 0)
+            {
+                MessageBox.Show("No se aceptan números negativos");
+                return;
+            }
             Categoria categoria = new Categoria(nombreCategoria, sueldoBase);
 
             if (categoria.AgregarCategoria())
@@ -63,23 +68,23 @@ namespace Payroll_1.Formularios
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (dgvCategoria.CurrentRow != null)
-            {
-                int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
-                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar esta categoria?",
-                                             "Confirmación de eliminación",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Information);
-                if (resultado == DialogResult.Yes)
-                {
-                    Categoria.EliminarCategoria(idCategoria);
-                }
-                cargarTablaDCategoria();
-            }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    if (dgvCategoria.CurrentRow != null)
+        //    {
+        //        int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
+        //        DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar esta categoria?",
+        //                                     "Confirmación de eliminación",
+        //                                     MessageBoxButtons.YesNo,
+        //                                     MessageBoxIcon.Information);
+        //        if (resultado == DialogResult.Yes)
+        //        {
+        //            Categoria.EliminarCategoria(idCategoria);
+        //        }
+        //        cargarTablaDCategoria();
+        //    }
 
-        }
+        //}
 
         private void dgvCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,6 +96,16 @@ namespace Payroll_1.Formularios
             int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
             string nombreCategoria = this.TxtNombreCat.Text;
             decimal sueldobase = Decimal.Parse(this.TxtSueldoBase.Text);
+            if (nombreCategoria.IsNullOrEmpty())
+            {
+                MessageBox.Show("Debe de llenar todos los campos");
+                return;
+            }
+            if(sueldobase < 0)
+            {
+                MessageBox.Show("No se aceptan números negativos");
+                return;
+            }
 
             Categoria categoria = new Categoria(idCategoria, nombreCategoria, sueldobase);
             DialogResult resultado = MessageBox.Show("¿Está seguro de que desea actualizar esta categoria?",
@@ -139,14 +154,15 @@ namespace Payroll_1.Formularios
         private void btnAgregarPuesto_Click(object sender, EventArgs e)
         {
             AgregarPuestos frm = new AgregarPuestos();
-            frm.ShowDialog();
+            frm.Show();
+            this.Dispose();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             GestionarPuestoCategoria frm = new GestionarPuestoCategoria();
             frm.Show();
-            this.Hide();
+            this.Dispose();
         }
     }
 }
