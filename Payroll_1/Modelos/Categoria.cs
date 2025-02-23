@@ -158,48 +158,45 @@ namespace Payroll_1.Modelos
             return categoria;
         }
 
+        //////ELIMINAR CATEGORIA
+        ////public static bool EliminarCategoria(int idCat)
+        ////{
+        ////    bool exito = false;
 
+        ////    // Consulta SQL para eliminar una deducción por su Id
+        ////    string query = "DELETE FROM Categoria WHERE id_categoria = @IdCategoria";
 
+        ////    Conexion conexion = new Conexion();
+        ////    using (SqlConnection connection = conexion.GetConnection())
+        ////    {
+        ////        try
+        ////        {
+        ////            // Abrir la conexión
+        ////            connection.Open();
 
-        //ELIMINAR CATEGORIA
-        public static bool EliminarCategoria(int idCat)
-        {
-            bool exito = false;
+        ////            // Crear el comando SQL y agregar el parámetro
+        ////            using (SqlCommand command = new SqlCommand(query, connection))
+        ////            {
+        ////                command.Parameters.AddWithValue("@IdCategoria", idCat);
 
-            // Consulta SQL para eliminar una deducción por su Id
-            string query = "DELETE FROM Categoria WHERE id_categoria = @IdCategoria";
+        ////                // Ejecutar la consulta
+        ////                int rowsAffected = command.ExecuteNonQuery();
 
-            Conexion conexion = new Conexion();
-            using (SqlConnection connection = conexion.GetConnection())
-            {
-                try
-                {
-                    // Abrir la conexión
-                    connection.Open();
+        ////                // Si se afectaron filas, la eliminación fue exitosa
+        ////                if (rowsAffected > 0)
+        ////                {
+        ////                    exito = true;
+        ////                }
+        ////            }
+        ////        }
+        ////        catch (Exception ex)
+        ////        {
+        ////            Console.WriteLine("Error al eliminar la categoria: " + ex.Message);
+        ////        }
+        ////    }
 
-                    // Crear el comando SQL y agregar el parámetro
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@IdCategoria", idCat);
-
-                        // Ejecutar la consulta
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // Si se afectaron filas, la eliminación fue exitosa
-                        if (rowsAffected > 0)
-                        {
-                            exito = true;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al eliminar la categoria: " + ex.Message);
-                }
-            }
-
-            return exito;
-        }
+        ////    return exito;
+        ////}
 
         // ACTUALIZAR CATEGORIA
         public bool ActualizarCategoria()

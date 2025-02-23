@@ -36,9 +36,10 @@
             // 
             // btnCategorias
             // 
-            btnCategorias.Location = new Point(314, 142);
+            btnCategorias.Location = new Point(310, 218);
+            btnCategorias.Margin = new Padding(3, 4, 3, 4);
             btnCategorias.Name = "btnCategorias";
-            btnCategorias.Size = new Size(139, 23);
+            btnCategorias.Size = new Size(159, 31);
             btnCategorias.TabIndex = 0;
             btnCategorias.Text = "Gestionar Categorias";
             btnCategorias.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // btnGestionarPuestos
             // 
-            btnGestionarPuestos.Location = new Point(314, 199);
+            btnGestionarPuestos.Location = new Point(310, 294);
+            btnGestionarPuestos.Margin = new Padding(3, 4, 3, 4);
             btnGestionarPuestos.Name = "btnGestionarPuestos";
-            btnGestionarPuestos.Size = new Size(139, 23);
+            btnGestionarPuestos.Size = new Size(159, 31);
             btnGestionarPuestos.TabIndex = 1;
             btnGestionarPuestos.Text = "Gestionar Puestos";
             btnGestionarPuestos.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(14, 16);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(42, 50);
+            pictureBox1.Size = new Size(48, 67);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 29;
             pictureBox1.TabStop = false;
@@ -67,12 +70,13 @@
             // 
             // GestionarPuestoCategoria
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(811, 543);
             Controls.Add(pictureBox1);
             Controls.Add(btnGestionarPuestos);
             Controls.Add(btnCategorias);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "GestionarPuestoCategoria";
             Text = "GestionarPuestoCategoria";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

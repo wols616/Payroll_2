@@ -21,21 +21,28 @@ namespace Payroll_1.Formularios.Admin
         {
             AgregarCategoria frm = new AgregarCategoria();
             frm.Show();
-            this.Hide();
+            this.Dispose();
         }
 
         private void btnGestionarPuestos_Click(object sender, EventArgs e)
         {
             AgregarPuestos frm = new AgregarPuestos();
             frm.Show();
-            this.Hide();
+            this.Dispose();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             HomeAdmin frm = new HomeAdmin();
             frm.Show();
-            this.Hide();
+            this.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //VerPuestos frm = new VerPuestos();
+            //frm.Show();
+            //this.Dispose();
         }
     }
 }
