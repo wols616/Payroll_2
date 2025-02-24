@@ -36,19 +36,19 @@
             btnEliminar = new Button();
             btnEditar = new Button();
             txtPorcentajee = new TextBox();
-            btnRegresar = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvDeducciones
             // 
             dgvDeducciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDeducciones.Location = new Point(67, 63);
-            dgvDeducciones.Margin = new Padding(3, 4, 3, 4);
+            dgvDeducciones.Location = new Point(59, 47);
             dgvDeducciones.Name = "dgvDeducciones";
             dgvDeducciones.RowHeadersWidth = 51;
             dgvDeducciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDeducciones.Size = new Size(781, 200);
+            dgvDeducciones.Size = new Size(683, 150);
             dgvDeducciones.TabIndex = 0;
             dgvDeducciones.CellClick += dgvDeducciones_CellClick;
             dgvDeducciones.SelectionChanged += dgvDeducciones_SelectionChanged;
@@ -56,35 +56,33 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(81, 301);
+            label1.Location = new Point(71, 226);
             label1.Name = "label1";
-            label1.Size = new Size(67, 20);
+            label1.Size = new Size(54, 15);
             label1.TabIndex = 1;
             label1.Text = "Nombre:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(443, 301);
+            label2.Location = new Point(388, 226);
             label2.Name = "label2";
-            label2.Size = new Size(81, 20);
+            label2.Size = new Size(66, 15);
             label2.TabIndex = 2;
             label2.Text = "Porcentaje:";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(166, 291);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Location = new Point(145, 218);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(175, 27);
+            txtNombre.Size = new Size(154, 23);
             txtNombre.TabIndex = 3;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(268, 379);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Location = new Point(234, 284);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(86, 31);
+            btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 5;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -92,10 +90,9 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(403, 379);
-            btnEliminar.Margin = new Padding(3, 4, 3, 4);
+            btnEliminar.Location = new Point(353, 284);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(86, 31);
+            btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 6;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -103,10 +100,9 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(535, 379);
-            btnEditar.Margin = new Padding(3, 4, 3, 4);
+            btnEditar.Location = new Point(468, 284);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(86, 31);
+            btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 7;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = true;
@@ -114,30 +110,30 @@
             // 
             // txtPorcentajee
             // 
-            txtPorcentajee.Location = new Point(526, 297);
-            txtPorcentajee.Margin = new Padding(3, 4, 3, 4);
+            txtPorcentajee.Location = new Point(460, 223);
             txtPorcentajee.Name = "txtPorcentajee";
-            txtPorcentajee.Size = new Size(175, 27);
+            txtPorcentajee.Size = new Size(154, 23);
             txtPorcentajee.TabIndex = 8;
             txtPorcentajee.TextChanged += txtPorcentajee_TextChanged;
             txtPorcentajee.KeyPress += txtPorcentajee_KeyPress;
             // 
-            // btnRegresar
+            // pictureBox1
             // 
-            btnRegresar.Location = new Point(12, 13);
-            btnRegresar.Margin = new Padding(3, 4, 3, 4);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(86, 31);
-            btnRegresar.TabIndex = 0;
-            btnRegresar.Text = "regresar";
-            btnRegresar.Click += btnRegresar_Click;
+            pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
+            pictureBox1.Location = new Point(11, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(42, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // agregarNuevasDeducciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(918, 447);
-            Controls.Add(btnRegresar);
+            ClientSize = new Size(803, 335);
+            Controls.Add(pictureBox1);
             Controls.Add(txtPorcentajee);
             Controls.Add(btnEditar);
             Controls.Add(btnEliminar);
@@ -146,12 +142,12 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvDeducciones);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "agregarNuevasDeducciones";
             Text = "agregarDeducciones";
             Load += agregarDeducciones_Load;
             MouseClick += agregarNuevasDeducciones_MouseClick;
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,6 +162,6 @@
         private Button btnEliminar;
         private Button btnEditar;
         private TextBox txtPorcentajee;
-        private Button btnRegresar;
+        private PictureBox pictureBox1;
     }
 }
