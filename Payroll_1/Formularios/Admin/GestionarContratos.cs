@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,18 @@ namespace Payroll_1.Formularios
         {
             InitializeComponent();
             cargarEmpleados();
+            dgvContratos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Establecer la fuente en negrita para los DataGridView
+            dgvContratos.DefaultCellStyle.Font = new Font(dgvContratos.Font, FontStyle.Italic);
+            dgvEmpleados.DefaultCellStyle.Font = new Font(dgvEmpleados.Font, FontStyle.Italic);
+            // Centrar el texto en las celdas de los DataGridView
+            dgvContratos.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvEmpleados.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvContratos.RowHeadersVisible = false;
+            dgvEmpleados.RowHeadersVisible = false;
+            // Color del formulario
+            this.BackColor = ColorTranslator.FromHtml("#dfe6ee");
         }
 
         Empleados empleado = new Empleados();
@@ -111,19 +124,7 @@ namespace Payroll_1.Formularios
 
         private void btn_crear_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleados.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un empleado");
-                return;
-            }
-            Puesto puestoSeleccionado = (Puesto)cbxPuesto.SelectedItem;
 
-            Contrato contrato = new Contrato(
-                empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSeleccionado.IdPuesto, definirTipoContrato(), "S"
-                );
-            contrato.AgregarContrato();
-            actualizarEstadoEmpleado();
-            cargarContratos();
         }
 
         private void cbxPuesto_SelectedValueChanged(object sender, EventArgs e)
@@ -152,35 +153,7 @@ namespace Payroll_1.Formularios
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleados.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione un empleado");
-                return;
-            }
 
-            var confirmResult = MessageBox.Show("¿Está seguro de que desea actualizar este contrato?",
-                                                 "Confirmar Actualización",
-                                                 MessageBoxButtons.YesNo);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                if (!checboxFechaBaja.Checked)
-                {
-                    Contrato contratoActualizar = new Contrato(
-                    contrato.IdContrato, empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSelec.IdPuesto, definirTipoContrato(), "S"
-                    );
-                    contratoActualizar.ActualizarContrato();
-                }
-                else if (checboxFechaBaja.Checked)
-                {
-                    Contrato contratoActualizar = new Contrato(
-                    contrato.IdContrato, empleado.IdEmpleado, dtpFechaAlta.Value, null, puestoSelec.IdPuesto, definirTipoContrato(), "S"
-                    );
-                    contratoActualizar.ActualizarContrato();
-                }
-                actualizarEstadoEmpleado();
-                cargarContratos();
-            }
         }
 
         private void dgvContratos_SelectionChanged(object sender, EventArgs e)
@@ -245,21 +218,150 @@ namespace Payroll_1.Formularios
 
                 if (vigente == "N")
                 {
-                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightCoral; // Rojo claro
+                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#ffd3cf");
                 }
                 else if (tipoContrato == "Definido")
                 {
-                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Aquamarine; // Verde claro
+                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#cffcff");
                 }
                 else if (tipoContrato == "Indefinido")
                 {
-                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen; // Verde claro
+                    dgvContratos.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#cfffd2");
                 }
             }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void dgvEmpleados_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvEmpleados.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#cffcff");
+        }
+
+        private void dgvEmpleados_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv.Rows[e.RowIndex].Selected)
+            {
+                dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#8ba6ff"); // Color de fondo
+                dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black; // Color del texto
+                dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold); // Fuente en negrita
+            }
+            else
+            {
+                dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Italic); // Fuente normal
+            }
+        }
+
+        private void dgvContratos_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv.Rows[e.RowIndex].Selected)
+            {
+                using (Pen pen = new Pen(Color.Black, 2)) // Color y grosor del borde
+                {
+                    Rectangle rect = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, e.RowBounds.Width - 1, e.RowBounds.Height - 1);
+                    e.Graphics.DrawRectangle(pen, rect);
+                }
+            }
+
+
+            if (dgv.Rows[e.RowIndex].Selected)
+            {
+                if (dgv.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorTranslator.FromHtml("#ffd3cf"))
+                {
+                    // Cancelado ROJO
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#ff6666"); // Color de fondo
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black; // Color del texto
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font.FontFamily, dgv.Font.Size, FontStyle.Bold); // Fuente en negrita
+                }
+                else if (dgv.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorTranslator.FromHtml("#cffcff"))
+                {
+                    // Definido CELESTE
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#8ba6ff"); // Color de fondo
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black; // Color del texto
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font.FontFamily, dgv.Font.Size, FontStyle.Bold); // Fuente en negrita
+                }
+                else if (dgv.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorTranslator.FromHtml("#cfffd2"))
+                {
+                    // Indefinido VERDE
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#73d377"); // Color de fondo
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black; // Color del texto
+                    dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font.FontFamily, dgv.Font.Size, FontStyle.Bold); // Fuente en negrita
+
+                }
+
+
+            }
+            else
+            {
+                dgv.Rows[e.RowIndex].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Italic); // Fuente normal
+            }
+        }
+
+        //BOTÓN CREAR
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un empleado");
+                return;
+            }
+            Puesto puestoSeleccionado = (Puesto)cbxPuesto.SelectedItem;
+
+            Contrato contrato = new Contrato(
+                empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSeleccionado.IdPuesto, definirTipoContrato(), "S"
+                );
+            contrato.AgregarContrato();
+            actualizarEstadoEmpleado();
+            cargarContratos();
+        }
+
+        // BOTÓN ACTUALIZAR
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un empleado");
+                return;
+            }
+
+            var confirmResult = MessageBox.Show("¿Está seguro de que desea actualizar este contrato?",
+                                                 "Confirmar Actualización",
+                                                 MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                if (!checboxFechaBaja.Checked)
+                {
+                    Contrato contratoActualizar = new Contrato(
+                    contrato.IdContrato, empleado.IdEmpleado, dtpFechaAlta.Value, dtpFechaBaja.Value, puestoSelec.IdPuesto, definirTipoContrato(), "S"
+                    );
+                    contratoActualizar.ActualizarContrato();
+                }
+                else if (checboxFechaBaja.Checked)
+                {
+                    Contrato contratoActualizar = new Contrato(
+                    contrato.IdContrato, empleado.IdEmpleado, dtpFechaAlta.Value, null, puestoSelec.IdPuesto, definirTipoContrato(), "S"
+                    );
+                    contratoActualizar.ActualizarContrato();
+                }
+                actualizarEstadoEmpleado();
+                cargarContratos();
+            }
+        }
+
+        // BOTÓN CANCELAR
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (dgvContratos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un contrato");
+                return;
+            }
             var confirmResult = MessageBox.Show("¿Está seguro de que desea cancelar este contrato?",
                                          "Confirmar Cancelación",
                                          MessageBoxButtons.YesNo);
@@ -276,6 +378,36 @@ namespace Payroll_1.Formularios
                 actualizarEstadoEmpleado();
                 cargarContratos();
             }
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Properties.Resources.btnCrearOn;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Properties.Resources.btnCrear;
+        }
+
+        private void pictureBox3_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox3.Image = Properties.Resources.btnActualizarOn;
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox3.Image = Properties.Resources.btnActualizar;
+        }
+
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox4.Image = Properties.Resources.btnCancelarOn;
+        }
+
+        private void pictureBox4_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox4.Image = Properties.Resources.btnCancelar;
         }
     }
 
