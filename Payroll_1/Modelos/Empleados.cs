@@ -126,7 +126,7 @@ namespace Payroll_1.Modelos
                                     Estado = reader["estado"].ToString(),
                                     Correo = reader["correo"].ToString(),
                                     Contrasena = reader["contrasena"].ToString()
-                                }; 
+                                };
                                 empleados.Add(empleado);
                             }
                         }
@@ -173,7 +173,7 @@ namespace Payroll_1.Modelos
             {
                 query.Append("direccion = @direccion, ");
                 parametros.Add(new SqlParameter("@direccion", SqlDbType.VarChar) { Value = Direccion });
-            }           
+            }
             if (!string.IsNullOrEmpty(CuentaCorriente))
             {
                 query.Append("cuenta_corriente = @cuenta_corriente, ");
@@ -232,9 +232,44 @@ namespace Payroll_1.Modelos
             }
         }
 
+        //Login
 
+        public int LoginEmpleado(string correo, string contrasena)
+        {
+            int idEmpleado = -1; 
 
+            using (SqlConnection con = conexion.GetConnection())
+            {
+                try
+                {
+                    con.Open();
+                    string query = "SELECT id_empleado FROM Empleado WHERE correo = @correo AND contrasena = @contrasena";
 
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@correo", correo);
+                        cmd.Parameters.AddWithValue("@contrasena", contrasena);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            idEmpleado = Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al iniciar sesión: Empleado no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return idEmpleado; 
+        }
 
     }
 }
