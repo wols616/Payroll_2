@@ -36,8 +36,9 @@
             btnEliminar = new Button();
             btnEditar = new Button();
             txtPorcentajee = new TextBox();
-            btnRegresar = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvDeducciones
@@ -45,6 +46,7 @@
             dgvDeducciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDeducciones.Location = new Point(59, 47);
             dgvDeducciones.Name = "dgvDeducciones";
+            dgvDeducciones.RowHeadersWidth = 51;
             dgvDeducciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDeducciones.Size = new Size(683, 150);
             dgvDeducciones.TabIndex = 0;
@@ -78,7 +80,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(145, 287);
+            btnAgregar.Location = new Point(234, 284);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 5;
@@ -88,7 +90,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(263, 287);
+            btnEliminar.Location = new Point(353, 284);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 6;
@@ -98,7 +100,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(379, 287);
+            btnEditar.Location = new Point(468, 284);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 7;
@@ -115,21 +117,23 @@
             txtPorcentajee.TextChanged += txtPorcentajee_TextChanged;
             txtPorcentajee.KeyPress += txtPorcentajee_KeyPress;
             // 
-            // btnRegresar
+            // pictureBox1
             // 
-            btnRegresar.Location = new Point(0, 0);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(75, 23);
-            btnRegresar.TabIndex = 0;
-            btnRegresar.Text = "regresar";
-            btnRegresar.Click += btnRegresar_Click;
+            pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
+            pictureBox1.Location = new Point(11, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(42, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // agregarNuevasDeducciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnRegresar);
+            ClientSize = new Size(803, 335);
+            Controls.Add(pictureBox1);
             Controls.Add(txtPorcentajee);
             Controls.Add(btnEditar);
             Controls.Add(btnEliminar);
@@ -143,6 +147,7 @@
             Load += agregarDeducciones_Load;
             MouseClick += agregarNuevasDeducciones_MouseClick;
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,6 +162,6 @@
         private Button btnEliminar;
         private Button btnEditar;
         private TextBox txtPorcentajee;
-        private Button btnRegresar;
+        private PictureBox pictureBox1;
     }
 }

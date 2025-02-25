@@ -42,10 +42,12 @@
             txtSueldoBase = new Label();
             txtSalarioNeto = new Label();
             txtTotalDeducciones = new Label();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvEmpleados
@@ -53,6 +55,7 @@
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleados.Location = new Point(70, 56);
             dgvEmpleados.Name = "dgvEmpleados";
+            dgvEmpleados.RowHeadersWidth = 51;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleados.Size = new Size(633, 150);
             dgvEmpleados.TabIndex = 0;
@@ -64,6 +67,7 @@
             dgvDeducciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDeducciones.Location = new Point(70, 295);
             dgvDeducciones.Name = "dgvDeducciones";
+            dgvDeducciones.RowHeadersWidth = 51;
             dgvDeducciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDeducciones.Size = new Size(408, 150);
             dgvDeducciones.TabIndex = 1;
@@ -89,11 +93,11 @@
             // 
             // btnRegresar
             // 
-            btnRegresar.Location = new Point(8, 27);
+            btnRegresar.Location = new Point(458, 241);
             btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(37, 36);
+            btnRegresar.Size = new Size(89, 26);
             btnRegresar.TabIndex = 5;
-            btnRegresar.Text = "button1";
+            btnRegresar.Text = "Regresar";
             btnRegresar.UseVisualStyleBackColor = true;
             btnRegresar.Click += btnRegresar_Click;
             // 
@@ -129,6 +133,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(70, 483);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(408, 150);
             dataGridView1.TabIndex = 9;
             // 
@@ -137,6 +142,7 @@
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(70, 679);
             dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
             dataGridView2.Size = new Size(408, 150);
             dataGridView2.TabIndex = 11;
             // 
@@ -178,12 +184,24 @@
             txtTotalDeducciones.TabIndex = 14;
             txtTotalDeducciones.Text = "Total:";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(42, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // generarNomina
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(800, 814);
+            Controls.Add(pictureBox1);
             Controls.Add(txtTotalDeducciones);
             Controls.Add(txtSalarioNeto);
             Controls.Add(txtSueldoBase);
@@ -205,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvDeducciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -225,5 +244,6 @@
         private Label txtSueldoBase;
         private Label txtSalarioNeto;
         private Label txtTotalDeducciones;
+        private PictureBox pictureBox1;
     }
 }
