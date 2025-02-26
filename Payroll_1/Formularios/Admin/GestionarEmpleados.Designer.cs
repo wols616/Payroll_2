@@ -164,7 +164,7 @@
             btn_Guardar.Text = "Guardar";
             btn_Guardar.UseVisualStyleBackColor = true;
             btn_Guardar.Click += button1_Click;
-            btn_Guardar.MouseHover += btn_Guardar_MouseHover;
+           // btn_Guardar.MouseHover += btn_Guardar_MouseHover;
             // 
             // btn_Modificar
             // 

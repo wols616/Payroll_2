@@ -147,7 +147,8 @@ namespace Payroll_1.Formularios
 
                 // Número de teléfono
                 string telefono = txt_Telefono.Text;
-                if (string.IsNullOrWhiteSpace(txt_Telefono.Text))
+
+                if (string.IsNullOrWhiteSpace(telefono))
                 {
                     MessageBox.Show("El campo Número de teléfono no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -156,29 +157,46 @@ namespace Payroll_1.Formularios
                     MessageBox.Show("El teléfono debe tener el formato XXXX-XXXX.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                else if (!empleado.EsTelefonoUnico(telefono))  // Llamada al método para verificar si el teléfono es único
+                {
+                    MessageBox.Show("Este número de teléfono ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 else
                 {
                     contadorValidaciones++;
                     empleado.Telefono = telefono;
                 }
 
+
                 // Correo
                 string correo = txtCorreo.Text.Trim();
                 string patronCorreo = @"^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$";
-                if (Regex.IsMatch(correo, patronCorreo))
-                {
-                    contadorValidaciones++;
-                    empleado.Correo = correo;
-                }
-                else if (string.IsNullOrWhiteSpace(txtCorreo.Text))
+
+                if (string.IsNullOrWhiteSpace(correo))
                 {
                     MessageBox.Show("El campo Correo no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                else
+                else if (!Regex.IsMatch(correo, patronCorreo))
                 {
                     MessageBox.Show("Ingrese un correo válido en formato ejemplo@dominio.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                else if (!empleado.EsCorreoUnico(correo))
+                {
+                    MessageBox.Show("Este correo ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    // Si pasa todas las validaciones
+                    contadorValidaciones++;
+                    empleado.Correo = correo;
+                }
+
+               
+
 
                 // Contraseña
                 string contrasena = txtContrasena.Text.Trim();
@@ -228,6 +246,8 @@ namespace Payroll_1.Formularios
         {
             try
             {
+                int idEmpleado = Convert.ToInt32(dgvEmpleados.SelectedRows[0].Cells["idempleado"].Value);
+
                 empleado.Dui = this.txt_DUI.Text;
                 empleado.Nombre = this.txt_Nombre.Text;
                 empleado.Apellidos = this.txt_Apellidos.Text;
@@ -252,6 +272,11 @@ namespace Payroll_1.Formularios
                 else if (dui.Length != 10 || dui[8] != '-' || !dui.Replace("-", "").All(char.IsDigit))
                 {
                     MessageBox.Show("El DUI debe tener el formato NNNNNNNNN-N.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (!empleado.EsDUIUnico(dui, idEmpleado)) // Llamada al método
+                {
+                    MessageBox.Show("Este DUI ya está registrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);                    
                     return;
                 }
                 else
@@ -338,7 +363,7 @@ namespace Payroll_1.Formularios
                     MessageBox.Show("La Cuenta Corriente debe tener exactamente 12 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                else if (!empleado.EsCuentaUnica(txt_Ncuenta.Text))
+                else if (!empleado.EsCuentaUnica(txt_Ncuenta.Text, idEmpleado))
                 {
                     MessageBox.Show("Este número de cuenta ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -352,38 +377,52 @@ namespace Payroll_1.Formularios
                 // Número de teléfono
                 string telefono = txt_Telefono.Text;
 
-                if (string.IsNullOrWhiteSpace(txt_Telefono.Text))
+                if (string.IsNullOrWhiteSpace(telefono))
                 {
-                    MessageBox.Show("El campo de Teléfono no puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El campo Número de teléfono no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (telefono.Length != 9 || telefono[4] != '-' || !telefono.Replace("-", "").All(char.IsDigit))
                 {
                     MessageBox.Show("El teléfono debe tener el formato XXXX-XXXX.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                else if (!empleado.EsTelefonoUnico(telefono, idEmpleado))  // Llamada al método para verificar si el teléfono es único con idEmpleado
+                {
+                    MessageBox.Show("Este número de teléfono ya está registrado. Por favor, ingrese uno diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 else
                 {
                     contadorValidaciones++;
-                    empleado.Telefono = telefono; // Se guarda con guión
+                    empleado.Telefono = telefono;
                 }
+
 
                 // Correo
                 string correo = txtCorreo.Text.Trim();
                 string patronCorreo = @"^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$";
-                if (Regex.IsMatch(correo, patronCorreo))
-                {
-                    contadorValidaciones++;
-                    empleado.Correo = correo;
-                }
-                else if (string.IsNullOrWhiteSpace(txtCorreo.Text))
+
+                if (string.IsNullOrWhiteSpace(correo))
                 {
                     MessageBox.Show("El campo Correo no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-                else
+                else if (!Regex.IsMatch(correo, patronCorreo))
                 {
                     MessageBox.Show("Ingrese un correo válido en formato ejemplo@dominio.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                else if (!empleado.EsCorreoUnico(correo, idEmpleado))
+                {
+                    MessageBox.Show("Este correo ya está registrado. Por favor, ingrese otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    contadorValidaciones++;
+                    empleado.Correo = correo;
+                }
+
 
                 // Contraseña
                 string contrasena = txtContrasena.Text.Trim();
@@ -408,7 +447,6 @@ namespace Payroll_1.Formularios
                 {
                     if (dgvEmpleados.SelectedRows.Count > 0)
                     {
-                        int idEmpleado = Convert.ToInt32(dgvEmpleados.SelectedRows[0].Cells["idempleado"].Value);
                         empleado.EditarEmpleado(idEmpleado);
                     }
                     else
@@ -442,13 +480,13 @@ namespace Payroll_1.Formularios
             List<Empleados> listaEmpleados = empleado.MostrarEmpleados();
             dgvEmpleados.DataSource = listaEmpleados;
             dgvEmpleados.Columns["IdEmpleado"].Visible = false;
-            btn_Guardar.Enabled = false;
+            //btn_Guardar.Enabled = false;
         }
 
         private void dgvEmpleados_SelectionChanged(object sender, EventArgs e)
         {
-            btn_Guardar.Enabled = false;
-            btn_Modificar.Enabled = true;
+            //btn_Guardar.Enabled = false;
+            //btn_Modificar.Enabled = true;
 
             if (dgvEmpleados.SelectedRows.Count > 0)
             {
@@ -518,8 +556,6 @@ namespace Payroll_1.Formularios
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
             dgvEmpleados.ClearSelection();
-            btn_Guardar.Enabled = true;
-            btn_Modificar.Enabled = false;
 
             txt_DUI.Text = "";
             txt_Nombre.Text = "";
@@ -540,18 +576,17 @@ namespace Payroll_1.Formularios
 
         private void txt_Ncuenta_TextChanged(object sender, EventArgs e)
         {
-            int cursorPos = txt_Ncuenta.SelectionStart;
+            int cursorPos = txt_Ncuenta.SelectionStart; 
             int lengthBefore = txt_Ncuenta.Text.Length;
 
             if (txt_Ncuenta.Text.Any(c => !char.IsDigit(c) && c != '-'))
             {
                 MessageBox.Show("Solo se permiten números.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_Ncuenta.Text = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray());
-                txt_Ncuenta.SelectionStart = txt_Ncuenta.Text.Length;
+                txt_Ncuenta.Text = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray()); 
+                txt_Ncuenta.SelectionStart = txt_Ncuenta.Text.Length; 
                 return;
             }
 
-            int digitCountBeforeCursor = txt_Ncuenta.Text.Take(cursorPos).Count(char.IsDigit);
             string numeroSinGuiones = new string(txt_Ncuenta.Text.Where(char.IsDigit).ToArray());
 
             if (numeroSinGuiones.Length > 12)
@@ -559,8 +594,8 @@ namespace Payroll_1.Formularios
                 numeroSinGuiones = numeroSinGuiones.Substring(0, 12);
             }
 
+            // Aplicar formato con guiones
             string formato = "";
-
             if (numeroSinGuiones.Length > 0)
                 formato += numeroSinGuiones.Substring(0, Math.Min(2, numeroSinGuiones.Length));
             if (numeroSinGuiones.Length > 2)
@@ -570,24 +605,11 @@ namespace Payroll_1.Formularios
             if (numeroSinGuiones.Length > 11)
                 formato += "-" + numeroSinGuiones.Substring(11, 1);
 
-            txt_Ncuenta.Text = formato;
-
-            int newCursorPos = 0;
-            int digitCounter = 0;
-
-            for (int i = 0; i < txt_Ncuenta.Text.Length; i++)
+            if (txt_Ncuenta.Text != formato)
             {
-                if (char.IsDigit(txt_Ncuenta.Text[i]))
-                    digitCounter++;
-
-                if (digitCounter == digitCountBeforeCursor)
-                {
-                    newCursorPos = i + 1;
-                    break;
-                }
+                txt_Ncuenta.Text = formato;
+                txt_Ncuenta.SelectionStart = formato.Length; 
             }
-
-            txt_Ncuenta.SelectionStart = Math.Min(newCursorPos, txt_Ncuenta.Text.Length);
         }
 
 
@@ -628,14 +650,7 @@ namespace Payroll_1.Formularios
         }
 
 
-        private void btn_Guardar_MouseHover(object sender, EventArgs e)
-        {
-            if (dgvEmpleados.SelectedRows.Count > 0)
-            {
-                MessageBox.Show("No puedes volver a registrar un empleado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-        }
+       
 
         private void btn_reporte_Click(object sender, EventArgs e)
         {
