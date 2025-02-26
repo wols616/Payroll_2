@@ -88,35 +88,51 @@ namespace Payroll_1.Formularios
 
         private void dgvCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            cargarTablaDCategoria();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvCategoria.Rows[e.RowIndex];
+                TxtNombreCat.Text = row.Cells["NombreCategoria"].Value?.ToString() ?? "";
+                TxtSueldoBase.Text = row.Cells["SueldoBase"].Value?.ToString() ?? "";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
-            string nombreCategoria = this.TxtNombreCat.Text;
-            decimal sueldobase = Decimal.Parse(this.TxtSueldoBase.Text);
-            if (nombreCategoria.IsNullOrEmpty())
+            try
             {
-                MessageBox.Show("Debe de llenar todos los campos");
-                return;
-            }
-            if(sueldobase < 0)
-            {
-                MessageBox.Show("No se aceptan números negativos");
-                return;
-            }
+                int idCategoria = Convert.ToInt32(dgvCategoria.CurrentRow.Cells["IdCategoria"].Value);
+                string nombreCategoria = TxtNombreCat.Text;
+                decimal sueldobase;
 
-            Categoria categoria = new Categoria(idCategoria, nombreCategoria, sueldobase);
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea actualizar esta categoria?",
-                                             "Confirmación de actualización",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Information);
-            if (resultado == DialogResult.Yes)
-            {
-                categoria.ActualizarCategoria();
+                if (!decimal.TryParse(TxtSueldoBase.Text, out sueldobase) || sueldobase < 0)
+                {
+                    MessageBox.Show("Ingrese un sueldo base válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(nombreCategoria))
+                {
+                    MessageBox.Show("Debe llenar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Categoria categoria = new Categoria(idCategoria, nombreCategoria, sueldobase);
+
+                // Confirmación antes de actualizar
+                DialogResult resultado = MessageBox.Show("¿Está seguro de que desea actualizar esta categoría?",
+                                                         "Confirmación de actualización",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Information);
+                if (resultado == DialogResult.Yes)
+                {
+                    categoria.ActualizarCategoria();
+                    cargarTablaDCategoria();
+                    MessageBox.Show("Categoría actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            cargarTablaDCategoria();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -124,7 +140,6 @@ namespace Payroll_1.Formularios
         {
             if (dgvCategoria.CurrentRow != null)
             {
-                // Obtener los valores de la fila seleccionada
                 DataGridViewRow row = dgvCategoria.CurrentRow;
                 TxtNombreCat.Text = row.Cells["NombreCategoria"].Value.ToString();
                 TxtSueldoBase.Text = row.Cells["SueldoBase"].Value.ToString();
