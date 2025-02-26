@@ -18,7 +18,6 @@ namespace Payroll_1.Formularios.Admin
         {
             InitializeComponent();
         }
-
         private void cargarTablaDPuesto()
         {
             dgvPuestos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -112,8 +111,9 @@ namespace Payroll_1.Formularios.Admin
             if (exito)
             {
                 MessageBox.Show("Puesto agregado correctamente.");
-                txtNombrePuesto.Clear();
-                cbCategoria.SelectedIndex = 0;
+                txtNombrePuesto.Text = "";
+                dgvPuestos.ClearSelection();
+                cbCategoria.SelectedIndex = -1;
             }
             cargarTablaDPuesto();
         }
@@ -152,8 +152,14 @@ namespace Payroll_1.Formularios.Admin
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            cargarTablaDPuesto();
-            cargarComboCategorias();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvPuestos.Rows[e.RowIndex];
+
+                txtNombrePuesto.Text = row.Cells["nombre_puesto"].Value?.ToString() ?? "";
+                cbCategoria.Text = row.Cells["nombre_categoria"].Value?.ToString() ?? "";
+                txtSueldoBase.Text = row.Cells["sueldo_base"].Value?.ToString() ?? "";
+            }
         }
 
         private void dvgPuestos_SelectionChanged(object sender, EventArgs e)
@@ -169,10 +175,13 @@ namespace Payroll_1.Formularios.Admin
 
         private void AgregarPuestos_MouseClick(object sender, MouseEventArgs e)
         {
-            txtNombrePuesto.Clear();
-            cbCategoria.SelectedIndex = -1;
-            cbCategoria.Text = "";
+            txtNombrePuesto.Text = "";
             txtSueldoBase.Clear();
+            cbCategoria.SelectedIndex = -1;
+
+            // Desactivar selección en el DataGridView
+            dgvPuestos.ClearSelection();
+            dgvPuestos.CurrentCell = null;
         }
 
         private void editar_Click(object sender, EventArgs e)
@@ -215,6 +224,11 @@ namespace Payroll_1.Formularios.Admin
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSueldoBase_TextChanged(object sender, EventArgs e)
         {
 
         }
