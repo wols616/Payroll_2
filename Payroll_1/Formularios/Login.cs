@@ -48,41 +48,35 @@ namespace Payroll_1.Formularios
             string correo = txtCorreo.Text;
             string contrasena = txtContrasena.Text;
 
-            bool hasError = false;
 
             if (string.IsNullOrEmpty(correo) && string.IsNullOrEmpty(contrasena))
             {
                 lbl_error.Text = "El correo y la contraseña no pueden estar vacíos.";
                 lbl_error.Visible = true;
-                hasError = true;
                 return;
             }
             else if (string.IsNullOrEmpty(correo))
             {
                 lbl_error.Text = "El correo no puede estar vacío.";
                 lbl_error.Visible = true;
-                hasError = true;
                 return;
             }
             else if (!IsValidEmail(correo))
             {
                 lbl_error.Text = "El correo no tiene un formato válido.";
                 lbl_error.Visible = true;
-                hasError = true;
                 return;
             }
             else if (string.IsNullOrEmpty(contrasena))
             {
                 lbl_error.Text = "La contraseña no puede estar vacía.";
                 lbl_error.Visible = true;
-                hasError = true;
                 return;
             }
             else if (!IsValidPassword(contrasena))
             {
                 lbl_error.Text = "La contraseña debe tener al menos una letra, un número y un símbolo.";
                 lbl_error.Visible = true;
-                hasError = true;
                 return;
             }
             else
@@ -113,7 +107,7 @@ namespace Payroll_1.Formularios
 
                 if (id_empleado != -1)
                 {
-                    HomeEmpleado frm = new HomeEmpleado();
+                    HomeEmpleado frm = new HomeEmpleado(id_empleado);
                     frm.Show();
                     this.Hide();
                 }

@@ -7,7 +7,7 @@ namespace Payroll_1
     internal class Conexion
     {
         // Cadena de conexión definida dentro de la clase
-        private readonly string connectionString = "Server=LOCALHOST;Database=payroll_1;User Id=brenda;Password=Beds123;Encrypt=False;";
+        private readonly string connectionString = "Server=HP_VICTUS_MARIO\\SQLSERVER;Database=payroll_1;User Id=mario;Password=802434;Encrypt=False;";
 
         // Método para obtener la conexión
         public SqlConnection GetConnection()
