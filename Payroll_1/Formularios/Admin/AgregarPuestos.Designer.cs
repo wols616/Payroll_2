@@ -88,6 +88,7 @@
             txtSueldoBase.Size = new Size(115, 27);
             txtSueldoBase.TabIndex = 5;
             txtSueldoBase.Text = "Sueldo Base";
+            txtSueldoBase.TextChanged += txtSueldoBase_TextChanged;
             // 
             // btnAgregar
             // 

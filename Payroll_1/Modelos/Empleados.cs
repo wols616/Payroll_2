@@ -295,22 +295,175 @@ namespace Payroll_1.Modelos
                 }
             }
         }
+        //Sobrecarga de Dui
+        public bool EsDUIUnico(string dui, int idEmpleado)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE dui = @dui AND id_empleado <> @idEmpleado";
+
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection()) // Usando tu método de conexión
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@dui", dui);
+                        cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+
+                        con.Open();
+                        int count = (int)cmd.ExecuteScalar();
+
+                        // Devuelve true si el DUI no está en uso por otro empleado
+                        return count == 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error al verificar el DUI: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+
+
+
+
 
         public bool EsCuentaUnica(string cuenta)
         {
             string query = "SELECT COUNT(*) FROM Empleado WHERE cuenta_corriente = @cuenta";
 
-            using (SqlConnection con = conexion.GetConnection()) 
+            using (SqlConnection con = conexion.GetConnection())
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@cuenta", cuenta);
                     con.Open();
                     int count = (int)cmd.ExecuteScalar();
-                    return count == 0; 
+                    return count == 0;
                 }
             }
         }
+        //sobrecarga de cuenta
+        public bool EsCuentaUnica(string cuenta, int idEmpleado)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE cuenta_corriente = @cuenta AND id_empleado <> @idEmpleado";
+
+            using (SqlConnection con = conexion.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@cuenta", cuenta);
+                    cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                    con.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    return count == 0; // Devuelve true si la cuenta no está en uso o pertenece al mismo empleado.
+                }
+            }
+        }
+
+
+        public bool EsCorreoUnico(string correo)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE correo = @correo";
+
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection()) // Usando tu método de conexión
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@correo", correo);
+                        con.Open();
+                        int count = (int)cmd.ExecuteScalar();
+
+                        // Devuelve true si el correo no está en uso
+                        return count == 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error al verificar el correo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //Sobrecarga de correo
+        public bool EsCorreoUnico(string correo, int idEmpleado)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE correo = @correo AND id_empleado <> @idEmpleado";
+
+            using (SqlConnection con = conexion.GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@correo", correo);
+                    cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                    con.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    return count == 0; // Devuelve true si el correo no está en uso o pertenece al mismo empleado.
+                }
+            }
+        }
+
+
+        public bool EsTelefonoUnico(string telefono)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE telefono = @telefono";
+
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection()) // Usando tu método de conexión
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        con.Open();
+                        int count = (int)cmd.ExecuteScalar();
+
+                        // Devuelve true si el teléfono no está en uso
+                        return count == 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error al verificar el teléfono: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        
+        //sobrecarga del método telefono
+        public bool EsTelefonoUnico(string telefono, int idEmpleado)
+        {
+            string query = "SELECT COUNT(*) FROM Empleado WHERE telefono = @telefono AND id_empleado <> @idEmpleado";
+
+            try
+            {
+                using (SqlConnection con = conexion.GetConnection()) // Usando tu método de conexión
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+                        con.Open();
+                        int count = (int)cmd.ExecuteScalar();
+
+                        // Devuelve true si el teléfono no está en uso o pertenece al mismo empleado
+                        return count == 0;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error al verificar el teléfono: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
 
 
 
