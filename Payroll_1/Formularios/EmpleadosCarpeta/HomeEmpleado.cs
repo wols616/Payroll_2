@@ -13,8 +13,11 @@ namespace Payroll_1.Formularios
 {
     public partial class HomeEmpleado : Form
     {
-        public HomeEmpleado()
+        int id_Empleado;
+
+        public HomeEmpleado(int id_empleado)
         {
+            id_Empleado = id_empleado;
             InitializeComponent();
         }
 
@@ -28,7 +31,7 @@ namespace Payroll_1.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DatosPersonales frm = new DatosPersonales();
+            DatosPersonales frm = new DatosPersonales(id_Empleado);
             frm.Show();
             this.Hide();
         }
