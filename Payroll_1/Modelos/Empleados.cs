@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing.Printing;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Payroll_1.Formularios;
 
 namespace Payroll_1.Modelos
 {
@@ -263,7 +264,7 @@ namespace Payroll_1.Modelos
                         }
                         else
                         {
-                            MessageBox.Show("Error al iniciar sesión: Empleado no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            
                         }
                     }
                 }

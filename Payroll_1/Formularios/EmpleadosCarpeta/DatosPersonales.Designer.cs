@@ -58,9 +58,11 @@
             lbl_contrasena_actual = new Label();
             lbl_message = new Label();
             lbl_id = new Label();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -88,6 +90,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(txt_direccion);
             groupBox1.Controls.Add(txt_telefono);
             groupBox1.Controls.Add(txt_apellidos);
@@ -143,12 +146,17 @@
             // 
             // btn_actualizar_personales
             // 
-            btn_actualizar_personales.Location = new Point(136, 384);
+            btn_actualizar_personales.AccessibleRole = AccessibleRole.None;
+            btn_actualizar_personales.BackColor = Color.FromArgb(135, 115, 238);
+            btn_actualizar_personales.FlatStyle = FlatStyle.Flat;
+            btn_actualizar_personales.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            btn_actualizar_personales.ForeColor = Color.White;
+            btn_actualizar_personales.Location = new Point(62, 384);
             btn_actualizar_personales.Name = "btn_actualizar_personales";
-            btn_actualizar_personales.Size = new Size(94, 29);
+            btn_actualizar_personales.Size = new Size(275, 42);
             btn_actualizar_personales.TabIndex = 6;
             btn_actualizar_personales.Text = "Actualizar";
-            btn_actualizar_personales.UseVisualStyleBackColor = true;
+            btn_actualizar_personales.UseVisualStyleBackColor = false;
             btn_actualizar_personales.Click += btn_actualizar1_click;
             // 
             // lbl_direccion
@@ -229,28 +237,38 @@
             // 
             // btn_no_cambiar
             // 
-            btn_no_cambiar.Location = new Point(111, 139);
+            btn_no_cambiar.AccessibleRole = AccessibleRole.None;
+            btn_no_cambiar.BackColor = Color.FromArgb(135, 115, 238);
+            btn_no_cambiar.FlatStyle = FlatStyle.Flat;
+            btn_no_cambiar.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            btn_no_cambiar.ForeColor = Color.White;
+            btn_no_cambiar.Location = new Point(93, 128);
             btn_no_cambiar.Name = "btn_no_cambiar";
-            btn_no_cambiar.Size = new Size(189, 29);
+            btn_no_cambiar.Size = new Size(208, 42);
             btn_no_cambiar.TabIndex = 20;
             btn_no_cambiar.Text = "No cambiar contraseña";
-            btn_no_cambiar.UseVisualStyleBackColor = true;
+            btn_no_cambiar.UseVisualStyleBackColor = false;
             btn_no_cambiar.Click += btn_no_cambiar_click;
             // 
             // btn_habilitar_cambio
             // 
-            btn_habilitar_cambio.Location = new Point(124, 75);
+            btn_habilitar_cambio.AccessibleRole = AccessibleRole.None;
+            btn_habilitar_cambio.BackColor = Color.FromArgb(135, 115, 238);
+            btn_habilitar_cambio.FlatStyle = FlatStyle.Flat;
+            btn_habilitar_cambio.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            btn_habilitar_cambio.ForeColor = Color.White;
+            btn_habilitar_cambio.Location = new Point(93, 75);
             btn_habilitar_cambio.Name = "btn_habilitar_cambio";
-            btn_habilitar_cambio.Size = new Size(167, 29);
+            btn_habilitar_cambio.Size = new Size(208, 42);
             btn_habilitar_cambio.TabIndex = 19;
             btn_habilitar_cambio.Text = "Cambiar contraseña";
-            btn_habilitar_cambio.UseVisualStyleBackColor = true;
+            btn_habilitar_cambio.UseVisualStyleBackColor = false;
             btn_habilitar_cambio.Click += btn_habilitar_cambio_contrasena_click;
             // 
             // txt_confirmar_contrasena
             // 
             txt_confirmar_contrasena.Font = new Font("Segoe UI", 9F);
-            txt_confirmar_contrasena.Location = new Point(200, 97);
+            txt_confirmar_contrasena.Location = new Point(200, 85);
             txt_confirmar_contrasena.Name = "txt_confirmar_contrasena";
             txt_confirmar_contrasena.Size = new Size(156, 27);
             txt_confirmar_contrasena.TabIndex = 18;
@@ -258,7 +276,7 @@
             // lbl_confirmar_contra
             // 
             lbl_confirmar_contra.AutoSize = true;
-            lbl_confirmar_contra.Location = new Point(35, 100);
+            lbl_confirmar_contra.Location = new Point(35, 88);
             lbl_confirmar_contra.Name = "lbl_confirmar_contra";
             lbl_confirmar_contra.Size = new Size(165, 20);
             lbl_confirmar_contra.TabIndex = 17;
@@ -267,7 +285,7 @@
             // txt_contrasena_nueva
             // 
             txt_contrasena_nueva.Font = new Font("Segoe UI", 9F);
-            txt_contrasena_nueva.Location = new Point(179, 49);
+            txt_contrasena_nueva.Location = new Point(179, 37);
             txt_contrasena_nueva.Name = "txt_contrasena_nueva";
             txt_contrasena_nueva.Size = new Size(156, 27);
             txt_contrasena_nueva.TabIndex = 16;
@@ -309,7 +327,7 @@
             // lbl_contra_nueva
             // 
             lbl_contra_nueva.AutoSize = true;
-            lbl_contra_nueva.Location = new Point(35, 52);
+            lbl_contra_nueva.Location = new Point(35, 40);
             lbl_contra_nueva.Name = "lbl_contra_nueva";
             lbl_contra_nueva.Size = new Size(138, 20);
             lbl_contra_nueva.TabIndex = 12;
@@ -325,12 +343,17 @@
             // 
             // btn_actualizar_sensibles
             // 
-            btn_actualizar_sensibles.Location = new Point(157, 384);
+            btn_actualizar_sensibles.AccessibleRole = AccessibleRole.None;
+            btn_actualizar_sensibles.BackColor = Color.FromArgb(135, 115, 238);
+            btn_actualizar_sensibles.FlatStyle = FlatStyle.Flat;
+            btn_actualizar_sensibles.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            btn_actualizar_sensibles.ForeColor = Color.White;
+            btn_actualizar_sensibles.Location = new Point(60, 384);
             btn_actualizar_sensibles.Name = "btn_actualizar_sensibles";
-            btn_actualizar_sensibles.Size = new Size(94, 29);
+            btn_actualizar_sensibles.Size = new Size(275, 42);
             btn_actualizar_sensibles.TabIndex = 11;
             btn_actualizar_sensibles.Text = "Actualizar";
-            btn_actualizar_sensibles.UseVisualStyleBackColor = true;
+            btn_actualizar_sensibles.UseVisualStyleBackColor = false;
             btn_actualizar_sensibles.Click += btn_actualizar2_click;
             // 
             // lbl_contrasena_actual
@@ -345,12 +368,11 @@
             // lbl_message
             // 
             lbl_message.BackColor = Color.MistyRose;
-            lbl_message.BorderStyle = BorderStyle.FixedSingle;
             lbl_message.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbl_message.ImageAlign = ContentAlignment.MiddleRight;
-            lbl_message.Location = new Point(27, 577);
+            lbl_message.Location = new Point(-8, 578);
             lbl_message.Name = "lbl_message";
-            lbl_message.Size = new Size(809, 53);
+            lbl_message.Size = new Size(877, 74);
             lbl_message.TabIndex = 34;
             lbl_message.Text = "label11";
             lbl_message.TextAlign = ContentAlignment.MiddleCenter;
@@ -363,11 +385,23 @@
             lbl_id.Size = new Size(0, 20);
             lbl_id.TabIndex = 35;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Payroll;
+            pictureBox2.Location = new Point(712, 18);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(124, 71);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 36;
+            pictureBox2.TabStop = false;
+            // 
             // DatosPersonales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(860, 649);
+            Controls.Add(pictureBox2);
             Controls.Add(lbl_id);
             Controls.Add(lbl_message);
             Controls.Add(groupBox2);
@@ -382,6 +416,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -418,5 +453,6 @@
         private Button btn_habilitar_cambio;
         private Button btn_no_cambiar;
         private Label lbl_id;
+        private PictureBox pictureBox2;
     }
 }
