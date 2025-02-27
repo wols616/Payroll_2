@@ -68,10 +68,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Back_Arrow_svg;
-            pictureBox1.Location = new Point(14, 16);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(48, 67);
+            pictureBox1.Size = new Size(42, 50);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 30;
             pictureBox1.TabStop = false;
@@ -397,7 +396,7 @@
             // 
             // DatosPersonales
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(860, 649);
@@ -408,7 +407,6 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "DatosPersonales";
             Text = "EditarDatosPersonales";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -418,7 +416,6 @@
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

@@ -53,8 +53,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(56, 285);
             label1.Name = "label1";
-            label1.Size = new Size(0, 20);
+            label1.Size = new Size(57, 20);
             label1.TabIndex = 0;
+            label1.Text = "Correo:";
             // 
             // txtCorreo
             // 
@@ -85,8 +86,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(56, 342);
             label2.Name = "label2";
-            label2.Size = new Size(0, 20);
+            label2.Size = new Size(86, 20);
             label2.TabIndex = 2;
+            label2.Text = "Contraseña:";
             // 
             // btnIngresar
             // 
@@ -131,6 +133,7 @@
             // 
             // lbl_error
             // 
+            lbl_error.AutoSize = true;
             lbl_error.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbl_error.ForeColor = Color.Firebrick;
             lbl_error.Location = new Point(-5, 557);
