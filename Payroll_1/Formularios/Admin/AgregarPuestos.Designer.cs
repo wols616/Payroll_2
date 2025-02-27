@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             txtNombrePuesto = new TextBox();
             cbCategoria = new ComboBox();
@@ -38,16 +40,19 @@
             pictureBox1 = new PictureBox();
             dgvPuestos = new DataGridView();
             editar = new Button();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.Location = new Point(128, 416);
             label1.Name = "label1";
-            label1.Size = new Size(141, 20);
+            label1.Size = new Size(148, 20);
             label1.TabIndex = 1;
             label1.Text = "Nombre del puesto:";
             // 
@@ -73,15 +78,17 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label2.Location = new Point(128, 379);
             label2.Name = "label2";
-            label2.Size = new Size(77, 20);
+            label2.Size = new Size(80, 20);
             label2.TabIndex = 4;
             label2.Text = "Categoria:";
             // 
             // txtSueldoBase
             // 
             txtSueldoBase.Enabled = false;
+            txtSueldoBase.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtSueldoBase.Location = new Point(558, 377);
             txtSueldoBase.Margin = new Padding(3, 4, 3, 4);
             txtSueldoBase.Name = "txtSueldoBase";
@@ -92,22 +99,27 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(569, 456);
+            btnAgregar.BackColor = Color.FromArgb(135, 115, 238);
+            btnAgregar.FlatAppearance.BorderSize = 0;
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            btnAgregar.ForeColor = Color.White;
+            btnAgregar.Location = new Point(436, 472);
             btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(155, 31);
+            btnAgregar.Size = new Size(220, 40);
             btnAgregar.TabIndex = 6;
             btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(285, 16);
             label3.Name = "label3";
-            label3.Size = new Size(260, 41);
+            label3.Size = new Size(269, 41);
             label3.TabIndex = 7;
             label3.Text = "Gestor de Puestos";
             label3.Click += label3_Click;
@@ -126,7 +138,18 @@
             // 
             // dgvPuestos
             // 
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(183, 171, 240);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(135, 115, 238);
+            dgvPuestos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvPuestos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(90, 63, 230);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvPuestos.DefaultCellStyle = dataGridViewCellStyle2;
             dgvPuestos.Location = new Point(96, 77);
             dgvPuestos.Name = "dgvPuestos";
             dgvPuestos.RowHeadersWidth = 51;
@@ -138,20 +161,37 @@
             // 
             // editar
             // 
-            editar.Location = new Point(398, 456);
+            editar.BackColor = Color.FromArgb(135, 115, 238);
+            editar.FlatAppearance.BorderSize = 0;
+            editar.FlatStyle = FlatStyle.Flat;
+            editar.Font = new Font("Bahnschrift", 10.2F, FontStyle.Bold);
+            editar.ForeColor = Color.White;
+            editar.Location = new Point(164, 472);
             editar.Margin = new Padding(3, 4, 3, 4);
             editar.Name = "editar";
-            editar.Size = new Size(155, 31);
+            editar.Size = new Size(220, 40);
             editar.TabIndex = 14;
             editar.Text = "Editar";
-            editar.UseVisualStyleBackColor = true;
+            editar.UseVisualStyleBackColor = false;
             editar.Click += editar_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Payroll;
+            pictureBox2.Location = new Point(724, 10);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(84, 99);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 32;
+            pictureBox2.TabStop = false;
             // 
             // AgregarPuestos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(755, 516);
+            BackColor = Color.White;
+            ClientSize = new Size(816, 544);
+            Controls.Add(pictureBox2);
             Controls.Add(editar);
             Controls.Add(dgvPuestos);
             Controls.Add(pictureBox1);
@@ -169,6 +209,7 @@
             MouseClick += AgregarPuestos_MouseClick;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPuestos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -185,5 +226,6 @@
         private PictureBox pictureBox1;
         private DataGridView dgvPuestos;
         private Button editar;
+        private PictureBox pictureBox2;
     }
 }

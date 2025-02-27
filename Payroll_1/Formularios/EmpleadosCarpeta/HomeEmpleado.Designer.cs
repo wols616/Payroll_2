@@ -30,40 +30,63 @@
         {
             button1 = new Button();
             pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(198, 101);
+            button1.BackColor = Color.FromArgb(135, 115, 238);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(219, 225);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(176, 23);
+            button1.Size = new Size(211, 42);
             button1.TabIndex = 0;
             button1.Text = "Datos Personales";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.logOut;
-            pictureBox1.Location = new Point(534, 199);
+            pictureBox1.Location = new Point(610, 265);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(33, 40);
+            pictureBox1.Size = new Size(38, 53);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Payroll;
+            pictureBox2.Location = new Point(185, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(282, 194);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 9;
+            pictureBox2.TabStop = false;
+            // 
             // HomeEmpleado
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(579, 251);
+            BackColor = Color.White;
+            ClientSize = new Size(662, 335);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "HomeEmpleado";
             Text = "HomeEmpleado";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -71,5 +94,6 @@
 
         private Button button1;
         private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

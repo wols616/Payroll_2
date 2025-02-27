@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using Payroll_1.Formularios;
 
 namespace Payroll_1.Modelos
 {
@@ -47,7 +48,7 @@ namespace Payroll_1.Modelos
                         }
                         else
                         {
-                            MessageBox.Show("Error al iniciar sesión: Administrador no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                         }
                     }
                 }

@@ -19,11 +19,7 @@ namespace Payroll_1.Formularios
         {
             InitializeComponent();
             lbl_error.Visible = false;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -43,6 +39,7 @@ namespace Payroll_1.Formularios
 
         }
 
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string correo = txtCorreo.Text;
@@ -52,42 +49,43 @@ namespace Payroll_1.Formularios
 
             if (string.IsNullOrEmpty(correo) && string.IsNullOrEmpty(contrasena))
             {
-                lbl_error.Text = "El correo y la contraseña no pueden estar vacíos.";
+                MostrarMensaje("El correo y la contraseña no pueden estar vacíos.");
                 lbl_error.Visible = true;
                 hasError = true;
                 return;
             }
             else if (string.IsNullOrEmpty(correo))
             {
-                lbl_error.Text = "El correo no puede estar vacío.";
+                MostrarMensaje("El correo no puede estar vacío.");
                 lbl_error.Visible = true;
                 hasError = true;
                 return;
             }
             else if (!IsValidEmail(correo))
             {
-                lbl_error.Text = "El correo no tiene un formato válido.";
+                MostrarMensaje("El correo no tiene un formato válido.");
                 lbl_error.Visible = true;
                 hasError = true;
                 return;
             }
             else if (string.IsNullOrEmpty(contrasena))
             {
-                lbl_error.Text = "La contraseña no puede estar vacía.";
+                MostrarMensaje("La contraseña no puede estar vacía.");
                 lbl_error.Visible = true;
                 hasError = true;
                 return;
             }
             else if (!IsValidPassword(contrasena))
             {
-                lbl_error.Text = "La contraseña debe tener al menos una letra, un número y un símbolo.";
+                MostrarMensaje(" Formato invalido, la contraseña debe tener al menos una letra, un número y un símbolo.");
                 lbl_error.Visible = true;
                 hasError = true;
                 return;
             }
             else
             {
-                lbl_error.Visible = false;
+                MostrarMensaje("Credenciales invalidas, usuario no encontrado");
+                lbl_error.Visible = true;
             }
 
             if (checkBoxAdmin.Checked)
@@ -119,6 +117,7 @@ namespace Payroll_1.Formularios
                 }
                 else { 
                     //Credenciales invalidas
+
                 }
 
             }
@@ -153,7 +152,13 @@ namespace Payroll_1.Formularios
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
         }
-
+        public void MostrarMensaje(string mensaje)
+        {
+            lbl_error.Text = mensaje;
+            lbl_error.BackColor = Color.LightCoral;
+            lbl_error.ForeColor = Color.DarkRed;
+            lbl_error.Visible = true;
+        }
 
     }
 }
